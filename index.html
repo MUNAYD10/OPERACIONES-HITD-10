@@ -3,295 +3,184 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Estudio — Avances y novedades</title>
+<title>Operaciones HitD'10 — Avances y novedades</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
 <style>
-  :root {
-    --bg: #0A0B0F;
-    --bg-raised: #121319;
-    --line: #23252E;
-    --text: #E8E9ED;
-    --text-muted: #888B96;
-    --text-faint: #55575F;
+:root{
+  --bg:#0A0B0F;--bg-raised:#121319;--line:#23252E;--text:#E8E9ED;
+  --text-muted:#888B96;--text-faint:#55575F;
+  --mc:#7FCB4A;--mc-dim:#3A4A2C;
+  --gta:#C9A227;--gta-dim:#4A3E1A;
+  --og:#3FD1E0;--og-dim:#1C3B40;
+  --join:#E85FD1;--join-dim:#4A2340;
+  --done:#7FCB4A;--planned:#9A9DA7;--exp:#C9A227;--dev:#3FD1E0;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:inherit;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{height:100%}
+body{background:var(--bg);color:var(--text);font-family:'Work Sans',Arial,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,a{font:inherit}
+.display{font-family:'Rajdhani','Work Sans',sans-serif;font-weight:700;letter-spacing:.01em}
+.mono{font-family:'IBM Plex Mono',monospace}
+a{color:inherit}
+button{cursor:pointer}
 
-    --mc: #7FCB4A;
-    --mc-dim: #3A4A2C;
-    --gta: #C9A227;
-    --gta-dim: #4A3E1A;
-    --og: #3FD1E0;
-    --og-dim: #1C3B40;
-    --join: #E85FD1;
-    --join-dim: #4A2340;
+header.nav{
+  position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(20px,5vw,56px);padding-top:calc(18px + env(safe-area-inset-top,0px));
+  background:rgba(10,11,15,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)
+}
+.nav-brand{font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1.15rem;display:flex;align-items:baseline;gap:8px;background:none;border:0;color:var(--text);padding:0}
+.nav-brand .pulse{width:7px;height:7px;border-radius:50%;background:var(--mc);display:inline-block;box-shadow:0 0 8px var(--mc);animation:blink 2.2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.nav-links{display:flex;gap:clamp(14px,3vw,28px);font-size:.88rem;color:var(--text-muted)}
+.nav-links button{background:none;border:0;color:inherit;white-space:nowrap;padding:0}
+.nav-links button:hover{color:var(--text)}
+.nav-links button.active{color:var(--text)}
+.nav-links button[data-view="minecraft"].active{color:var(--mc)}
+.nav-links button[data-view="gtav"].active{color:var(--gta)}
+.nav-links button[data-view="original"].active{color:var(--og)}
 
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  * { box-sizing: inherit; margin: 0; padding: 0; }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
-  html, body { height: 100%; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Work Sans', Arial, sans-serif;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  }
+.view{display:none}.view.active{display:block}
 
-  .display { font-family: 'Rajdhani', 'Work Sans', sans-serif; font-weight: 700; letter-spacing: 0.01em; }
-  .mono { font-family: 'IBM Plex Mono', monospace; }
-  a { color: inherit; }
+.hero{
+  position:relative;padding:clamp(64px,12vh,120px) clamp(20px,5vw,56px) clamp(48px,8vh,80px);
+  overflow:hidden;border-bottom:1px solid var(--line)
+}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,var(--line) 1px,transparent 1px),linear-gradient(to bottom,var(--line) 1px,transparent 1px);background-size:42px 42px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 20% 10%,black,transparent);mask-image:radial-gradient(ellipse 70% 60% at 20% 10%,black,transparent);opacity:.6;pointer-events:none}
+.hero-inner{position:relative;max-width:760px}
+.hero-tag{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--mc);margin-bottom:18px}
+h1.hero-title{font-size:clamp(2.4rem,7vw,4.2rem);line-height:1.02;max-width:14ch}
+.hero-sub{margin-top:22px;max-width:46ch;color:var(--text-muted);font-size:1.05rem}
+.hero-about{margin-top:16px;max-width:56ch;color:var(--text-muted);font-size:.98rem}
+.social-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
 
-  /* custom cursor */
-  html, body {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26' viewBox='0 0 26 26'%3E%3Ccircle cx='13' cy='13' r='9' fill='none' stroke='%23E8E9ED' stroke-width='1.5'/%3E%3Ccircle cx='13' cy='13' r='2' fill='%233FD1E0'/%3E%3C/svg%3E") 13 13, auto;
-  }
-  a, button {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(-22 16 16)' stroke='%233FD1E0' stroke-width='2.2' stroke-linecap='round' fill='none'%3E%3Cline x1='16' y1='3' x2='16' y2='23'/%3E%3Cline x1='10' y1='21' x2='22' y2='21'/%3E%3Cline x1='16' y1='23' x2='16' y2='28'/%3E%3C/g%3E%3C/svg%3E") 6 6, pointer;
-  }
+.glink{text-decoration:none;font-size:.86rem;display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:3px;border:1px solid var(--line);color:var(--text);transition:transform .12s ease,border-color .15s ease}
+.glink:hover{transform:translateY(-1px);border-color:var(--text)}
+.glink .dot{width:6px;height:6px;border-radius:50%;background:var(--text-muted)}
 
-  /* ---------- top nav (always visible, switches the whole interface below) ---------- */
-  header.nav {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px clamp(20px, 5vw, 56px);
-    padding-top: calc(18px + env(safe-area-inset-top, 0px));
-    background: rgba(10,11,15,0.92);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
-  }
-  .nav-brand {
-    font-family: 'Rajdhani', sans-serif;
-    font-weight: 700;
-    font-size: 1.15rem;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    background: none;
-    border: none;
-    color: var(--text);
-    padding: 0;
-  }
-  .nav-brand .pulse {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--mc);
-    display: inline-block;
-    box-shadow: 0 0 8px var(--mc);
-    animation: blink 2.2s ease-in-out infinite;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.35} }
-  .nav-links { display: flex; gap: clamp(14px, 3vw, 28px); font-size: 0.88rem; color: var(--text-muted); }
-  .nav-links button {
-    background: none; border: none; font: inherit; color: inherit;
-    text-decoration: none; white-space: nowrap; padding: 0;
-  }
-  .nav-links button:hover { color: var(--text); }
-  .nav-links button.active { color: var(--text); }
-  .nav-links button[data-view="minecraft"].active { color: var(--mc); }
-  .nav-links button[data-view="gtav"].active { color: var(--gta); }
-  .nav-links button[data-view="original"].active { color: var(--og); }
+.join{padding:clamp(48px,8vh,88px) clamp(20px,5vw,56px);border-bottom:1px solid var(--line);position:relative;background-image:linear-gradient(180deg,rgba(232,95,209,.045),transparent 220px)}
+.join .status{color:var(--join);border:1px solid var(--join-dim)}
+.join-note{max-width:980px;margin:0 auto 28px;font-family:'IBM Plex Mono',monospace;font-size:.76rem;color:var(--text-faint)}
+.game-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;max-width:980px;margin:0 auto 28px;border-bottom:1px solid var(--line);padding-bottom:20px}
+.game-head h2{font-size:clamp(1.7rem,4vw,2.4rem)}
+.status{font-family:'IBM Plex Mono',monospace;font-size:.76rem;padding:5px 10px;border-radius:3px;white-space:nowrap}
+.game-desc{max-width:62ch;margin:0 auto 40px;color:var(--text-muted)}
+.game-links{max-width:980px;margin:32px auto 0;display:flex;gap:10px;flex-wrap:wrap}
 
-  /* ---------- views: only one shown at a time, whole interface swap ---------- */
-  .view { display: none; }
-  .view.active { display: block; }
+.game{padding:clamp(40px,7vh,80px) clamp(20px,5vw,56px);position:relative;min-height:calc(100vh - 64px)}
+.game[data-c="mc"]{background-image:linear-gradient(180deg,rgba(127,203,74,.045),transparent 340px)}
+.game[data-c="gta"]{background-image:linear-gradient(180deg,rgba(201,162,39,.045),transparent 260px)}
+.game[data-c="og"]{background-image:linear-gradient(180deg,rgba(63,209,224,.045),transparent 260px)}
+.game[data-c="mc"] .status{color:var(--mc);border:1px solid var(--mc-dim)}
+.game[data-c="gta"] .status{color:var(--gta);border:1px solid var(--gta-dim)}
+.game[data-c="og"] .status{color:var(--og);border:1px solid var(--og-dim)}
 
-  /* ---------- hero ---------- */
-  .hero {
-    position: relative;
-    padding: clamp(64px, 12vh, 120px) clamp(20px, 5vw, 56px) clamp(48px, 8vh, 80px);
-    overflow: hidden;
-    border-bottom: 1px solid var(--line);
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(to right, var(--line) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
-    background-size: 42px 42px;
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 20% 10%, black, transparent);
-            mask-image: radial-gradient(ellipse 70% 60% at 20% 10%, black, transparent);
-    opacity: 0.6;
-    pointer-events: none;
-  }
-  .hero-inner { position: relative; max-width: 760px; }
-  .hero-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem; color: var(--mc); margin-bottom: 18px; }
-  h1.hero-title { font-size: clamp(2.4rem, 7vw, 4.2rem); line-height: 1.02; max-width: 14ch; }
-  .hero-sub { margin-top: 22px; max-width: 46ch; color: var(--text-muted); font-size: 1.05rem; }
-  .hero-about { margin-top: 16px; max-width: 56ch; color: var(--text-muted); font-size: 0.98rem; }
-  .social-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
-  .hero .glink .dot { background: var(--text-muted); }
-  .hero .glink:hover { border-color: var(--text); }
+.switch-row{max-width:980px;margin:0 auto 32px;display:flex;gap:10px;flex-wrap:wrap}
+.switch-row button{font-family:'IBM Plex Mono',monospace;font-size:.76rem;padding:7px 13px;border-radius:3px;border:1px solid var(--line);background:none;color:var(--text-muted)}
+.switch-row button:hover{color:var(--text)}
 
-  .hero-jump { display: flex; gap: 10px; margin-top: 36px; flex-wrap: wrap; }
-  .jump-chip {
-    text-decoration: none; font-size: 0.85rem; padding: 9px 16px;
-    border: 1px solid var(--line); border-radius: 3px; color: var(--text);
-    background: none;
-    transition: border-color 0.15s ease, background 0.15s ease;
-  }
-  .jump-chip[data-c="mc"]:hover { border-color: var(--mc); background: rgba(127,203,74,0.06); }
-  .jump-chip[data-c="gta"]:hover { border-color: var(--gta); background: rgba(201,162,39,0.06); }
-  .jump-chip[data-c="og"]:hover { border-color: var(--og); background: rgba(63,209,224,0.06); }
+.mc-nav{max-width:980px;margin:0 auto 38px;display:flex;gap:8px;flex-wrap:wrap}
+.mc-tab{font-family:'IBM Plex Mono',monospace;font-size:.72rem;padding:9px 12px;border:1px solid var(--line);border-radius:3px;background:#0d0f13;color:var(--text-muted);transition:.15s}
+.mc-tab:hover{color:var(--text);border-color:#444852}
+.mc-tab.active{color:var(--mc);border-color:var(--mc-dim);background:rgba(127,203,74,.055)}
 
-  /* ---------- join / whitelist section ---------- */
-  .join {
-    padding: clamp(48px, 8vh, 88px) clamp(20px, 5vw, 56px);
-    border-bottom: 1px solid var(--line);
-    position: relative;
-    background-image: linear-gradient(180deg, rgba(232,95,209,0.045), transparent 220px);
-  }
-  .join .status { color: var(--join); border: 1px solid var(--join-dim); }
-  .join .glink:hover { border-color: var(--join); }
-  .join .glink .dot { background: var(--join); }
-  .join-note {
-    max-width: 980px; margin: 0 auto 28px;
-    font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; color: var(--text-faint);
-  }
+.mc-panel{display:none;max-width:980px;margin:0 auto}
+.mc-panel.active{display:block}
 
-  /* ---------- game view ---------- */
-  .game {
-    padding: clamp(48px, 8vh, 88px) clamp(20px, 5vw, 56px);
-    position: relative;
-    min-height: calc(100vh - 64px);
-  }
-  .game-head {
-    display: flex; align-items: flex-end; justify-content: space-between;
-    gap: 20px; flex-wrap: wrap; max-width: 980px; margin: 0 auto 40px;
-    border-bottom: 1px solid var(--line); padding-bottom: 20px;
-  }
-  .game-head h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
-  .game-head .status {
-    font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem;
-    padding: 5px 10px; border-radius: 3px; white-space: nowrap;
-  }
-  .game[data-c="mc"] .status { color: var(--mc); border: 1px solid var(--mc-dim); }
-  .game[data-c="gta"] .status { color: var(--gta); border: 1px solid var(--gta-dim); }
-  .game[data-c="og"] .status { color: var(--og); border: 1px solid var(--og-dim); }
+.mc-hero{border:1px solid var(--line);background:rgba(18,19,25,.72);padding:clamp(24px,5vw,42px);position:relative;overflow:hidden}
+.mc-hero::after{content:"MUNDO VIVO";position:absolute;right:-18px;bottom:-35px;font-family:'Rajdhani',sans-serif;font-size:clamp(4rem,12vw,9rem);font-weight:700;color:rgba(127,203,74,.035);pointer-events:none}
+.mc-kicker{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--mc);margin-bottom:10px}
+.mc-title{font-family:'Rajdhani',sans-serif;font-size:clamp(2.2rem,6vw,4.5rem);line-height:.95;max-width:10ch}
+.mc-lead{color:var(--text-muted);max-width:65ch;margin-top:20px;font-size:1rem}
+.mc-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+.meta-card{border:1px solid var(--line);padding:13px;background:rgba(10,11,15,.55)}
+.meta-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.64rem;color:var(--text-faint);margin-bottom:5px}
+.meta-value{font-family:'Rajdhani',sans-serif;font-size:1.1rem;font-weight:700}
 
-  .game-desc { max-width: 62ch; margin: 0 auto 40px; color: var(--text-muted); }
+.section-title{font-family:'Rajdhani',sans-serif;font-size:1.7rem;margin-bottom:8px}
+.section-sub{color:var(--text-muted);font-size:.92rem;margin-bottom:24px;max-width:65ch}
 
-  .log { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; }
-  .log-entry { display: grid; grid-template-columns: 92px 1fr; gap: 20px; padding: 20px 0; border-top: 1px solid var(--line); }
-  .log-entry:first-child { border-top: none; }
-  .log-date { font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem; color: var(--text-faint); padding-top: 3px; }
-  .log-body h3 { font-family: 'Work Sans', sans-serif; font-weight: 600; font-size: 1.02rem; margin-bottom: 6px; }
-  .log-body p { color: var(--text-muted); font-size: 0.94rem; max-width: 58ch; }
-  .game[data-c="mc"] .log-date { color: var(--mc); }
-  .game[data-c="gta"] .log-date { color: var(--gta); }
-  .game[data-c="og"] .log-date { color: var(--og); }
+.status-legend{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 28px}
+.legend{font-family:'IBM Plex Mono',monospace;font-size:.68rem;padding:6px 9px;border:1px solid var(--line);border-radius:3px}
+.legend.done{color:var(--done);border-color:var(--mc-dim)}
+.legend.dev{color:var(--dev);border-color:var(--og-dim)}
+.legend.planned{color:var(--planned)}
+.legend.exp{color:var(--exp);border-color:var(--gta-dim)}
 
-  .game-links { max-width: 980px; margin: 32px auto 0; display: flex; gap: 10px; flex-wrap: wrap; }
-  .glink {
-    text-decoration: none; font-size: 0.86rem; display: inline-flex; align-items: center; gap: 8px;
-    padding: 9px 15px; border-radius: 3px; border: 1px solid var(--line); color: var(--text);
-    transition: transform 0.12s ease, border-color 0.15s ease;
-  }
-  .glink:hover { transform: translateY(-1px); }
-  .game[data-c="mc"] .glink:hover { border-color: var(--mc); }
-  .game[data-c="gta"] .glink:hover { border-color: var(--gta); }
-  .game[data-c="og"] .glink:hover { border-color: var(--og); }
-  .glink .dot { width: 6px; height: 6px; border-radius: 50%; }
-  .game[data-c="mc"] .glink .dot { background: var(--mc); }
-  .game[data-c="gta"] .glink .dot { background: var(--gta); }
-  .game[data-c="og"] .glink .dot { background: var(--og); }
+.roadmap-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.road-card{border:1px solid var(--line);background:rgba(18,19,25,.65);padding:18px}
+.road-card h4{font-family:'Rajdhani',sans-serif;font-size:1.15rem;margin-bottom:12px}
+.road-card ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.road-card li{font-size:.83rem;color:var(--text-muted);display:flex;gap:8px;align-items:flex-start}
+.road-card li.done{color:var(--text)}
+.road-card li.done::before{content:"✓";color:var(--done);font-family:'IBM Plex Mono',monospace}
+.road-card li.dev::before{content:"◆";color:var(--dev);font-size:.7rem;margin-top:3px}
+.road-card li.planned::before{content:"+";color:var(--planned);font-family:'IBM Plex Mono',monospace}
+.road-card li.exp::before{content:"◇";color:var(--exp)}
 
-  .game[data-c="mc"] { background-image: linear-gradient(180deg, rgba(127,203,74,0.045), transparent 260px); }
-  .game[data-c="gta"] { background-image: linear-gradient(180deg, rgba(201,162,39,0.045), transparent 260px); }
-  .game[data-c="og"] { background-image: linear-gradient(180deg, rgba(63,209,224,0.045), transparent 260px); }
+.update-list{display:flex;flex-direction:column}
+.update-entry{display:grid;grid-template-columns:105px 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--line)}
+.update-entry:first-child{border-top:0}
+.update-date{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--mc);padding-top:3px}
+.update-body h4{font-size:1rem;margin-bottom:5px}
+.update-body p{color:var(--text-muted);font-size:.88rem;max-width:65ch}
 
-  .switch-row {
-    max-width: 980px; margin: 0 auto 32px;
-    display: flex; gap: 10px; flex-wrap: wrap;
-  }
-  .switch-row button {
-    font-family: 'IBM Plex Mono', monospace; font-size: 0.76rem;
-    padding: 7px 13px; border-radius: 3px; border: 1px solid var(--line);
-    background: none; color: var(--text-muted);
-    transition: border-color 0.15s ease, color 0.15s ease;
-  }
-  .switch-row button:hover { color: var(--text); }
+.system-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.system-card{border:1px solid var(--line);padding:16px;background:rgba(18,19,25,.6)}
+.system-card h4{font-family:'Rajdhani',sans-serif;font-size:1.1rem;margin-bottom:8px}
+.system-card p{font-size:.8rem;color:var(--text-muted);margin-bottom:10px}
+.system-state{font-family:'IBM Plex Mono',monospace;font-size:.65rem}
+.system-state.done{color:var(--done)}.system-state.dev{color:var(--dev)}.system-state.planned{color:var(--planned)}
 
-  /* ---------- transition effects overlay ---------- */
-  .fx-layer {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 15;
-    overflow: hidden;
-  }
-  .fx-cube {
-    position: absolute;
-    top: -30px;
-    width: 18px; height: 18px;
-    background: var(--mc);
-    border: 2px solid #4d7a2a;
-    box-shadow: inset -4px -4px 0 rgba(0,0,0,0.25);
-    opacity: 0;
-    animation: fxFall 1.3s ease-in forwards;
-  }
-  @keyframes fxFall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-    8% { opacity: 1; }
-    100% { transform: translateY(112vh) rotate(200deg); opacity: 0.9; }
-  }
-  .fx-car {
-    position: absolute;
-    top: 46%;
-    left: -160px;
-    opacity: 0;
-    animation: fxDrive 0.9s cubic-bezier(0.3,0,0.2,1) forwards;
-  }
-  @keyframes fxDrive {
-    0% { transform: translateX(0); opacity: 0; }
-    6% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { transform: translateX(calc(100vw + 200px)); opacity: 0; }
-  }
-  .fx-leaf {
-    position: absolute;
-    top: -30px;
-    opacity: 0;
-    animation: fxDrift 2.4s ease-in-out forwards;
-  }
-  @keyframes fxDrift {
-    0% { transform: translate(0,0) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.9; }
-    100% { transform: translate(var(--fx-dx,40px), 112vh) rotate(300deg); opacity: 0; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .fx-layer { display: none; }
-  }
+.world-layout{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.world-card{border:1px solid var(--line);padding:22px;background:rgba(18,19,25,.65)}
+.world-card h4{font-family:'Rajdhani',sans-serif;font-size:1.5rem}
+.world-type{font-family:'IBM Plex Mono',monospace;font-size:.67rem;color:var(--mc);margin:5px 0 14px}
+.world-card p,.world-card li{font-size:.84rem;color:var(--text-muted)}
+.world-card ul{padding-left:18px;margin-top:10px}
 
-  /* ---------- footer ---------- */
-  footer {
-    padding: 40px clamp(20px, 5vw, 56px) calc(40px + env(safe-area-inset-bottom, 0px));
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;
-    color: var(--text-faint); font-size: 0.82rem;
-    border-top: 1px solid var(--line);
-  }
-  footer button { background: none; border: none; font: inherit; text-decoration: none; color: var(--text-muted); padding: 0; }
-  footer button:hover { color: var(--text); }
+.doc-box{border:1px solid var(--line);padding:22px;background:rgba(18,19,25,.65)}
+.doc-box p{color:var(--text-muted);font-size:.9rem;max-width:70ch;margin-bottom:18px}
+.doc-pills{display:flex;flex-wrap:wrap;gap:8px}
+.doc-pill{font-family:'IBM Plex Mono',monospace;font-size:.68rem;border:1px solid var(--line);padding:7px 10px;color:var(--text-muted)}
 
-  @media (max-width: 600px) {
-    .log-entry { grid-template-columns: 1fr; gap: 6px; }
-    .nav-links { font-size: 0.8rem; gap: 12px; }
-  }
+footer{padding:40px clamp(20px,5vw,56px) calc(40px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;color:var(--text-faint);font-size:.82rem;border-top:1px solid var(--line)}
+footer button{background:none;border:0;color:var(--text-muted);padding:0}
+footer button:hover{color:var(--text)}
+
+.fx-layer{position:fixed;inset:0;pointer-events:none;z-index:15;overflow:hidden}
+.fx-cube{position:absolute;top:-30px;width:18px;height:18px;background:var(--mc);border:2px solid #4d7a2a;box-shadow:inset -4px -4px 0 rgba(0,0,0,.25);opacity:0;animation:fxFall 1.3s ease-in forwards}
+@keyframes fxFall{0%{transform:translateY(0) rotate(0);opacity:0}8%{opacity:1}100%{transform:translateY(112vh) rotate(200deg);opacity:.9}}
+.fx-car{position:absolute;top:46%;left:-160px;opacity:0;animation:fxDrive .9s cubic-bezier(.3,0,.2,1) forwards}
+@keyframes fxDrive{0%{transform:translateX(0);opacity:0}6%{opacity:1}90%{opacity:1}100%{transform:translateX(calc(100vw + 200px));opacity:0}}
+.fx-leaf{position:absolute;top:-30px;opacity:0;animation:fxDrift 2.4s ease-in-out forwards}
+@keyframes fxDrift{0%{transform:translate(0,0) rotate(0);opacity:0}10%{opacity:.9}100%{transform:translate(var(--fx-dx,40px),112vh) rotate(300deg);opacity:0}}
+@media(prefers-reduced-motion:reduce){.fx-layer{display:none}}
+
+@media(max-width:700px){
+  .nav-links{font-size:.78rem;gap:10px}
+  .mc-meta{grid-template-columns:1fr}
+  .roadmap-grid,.world-layout{grid-template-columns:1fr}
+  .system-grid{grid-template-columns:1fr 1fr}
+  .update-entry{grid-template-columns:1fr;gap:5px}
+}
+@media(max-width:480px){
+  header.nav{padding-left:15px;padding-right:15px}
+  .nav-brand{font-size:1rem}
+  .nav-links{font-size:.72rem;gap:8px}
+  .system-grid{grid-template-columns:1fr}
+  .mc-tab{font-size:.66rem;padding:8px 9px}
+}
 </style>
 </head>
-<body>
 
+<body>
 <div class="fx-layer" id="fx-layer"></div>
 
 <header class="nav">
@@ -304,25 +193,22 @@
   </nav>
 </header>
 
-<!-- ============ VIEW: HOME ============ -->
+<!-- HOME -->
 <div class="view active" id="view-home">
-
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-tag mono">BITÁCORA DE DESARROLLO</div>
       <h1 class="display hero-title">Lo que estamos construyendo, en tiempo real.</h1>
       <p class="hero-sub">Un solo lugar para seguir el avance de cada proyecto: mods, servidores y el juego propio que estamos desarrollando. Sin ruido, solo novedades.</p>
-
       <p class="hero-about"><strong style="color:var(--text)">Quiénes somos:</strong> Somos un gran equipo creado por mí: una comunidad que desarrolla modificaciones para videojuegos, en especial Minecraft y GTA V, con servidores propios para poder jugar y crear juntos.</p>
       <p class="hero-about"><strong style="color:var(--text)">Qué buscamos:</strong> Sumar personas que quieran apoyar el desarrollo de estos proyectos con lo que saben hacer — programación, modelado, diseño, ideas — y crecer juntos como comunidad.</p>
-
       <div class="social-row">
-        <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>Discord</a>
-        <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>Twitch</a>
-        <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>YouTube</a>
-        <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>TikTok</a>
-        <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>Kick</a>
-        <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>X (Twitter)</a>
+        <a class="glink" href="https://discord.gg/RNTfBrpQzE" target="_blank" rel="noopener"><span class="dot"></span>Discord</a>
+        <a class="glink" href="https://m.twitch.tv/hittd10/home" target="_blank" rel="noopener"><span class="dot"></span>Twitch</a>
+        <a class="glink" href="https://www.youtube.com/@hitd10gamer2" target="_blank" rel="noopener"><span class="dot"></span>YouTube</a>
+        <a class="glink" href="https://www.tiktok.com/@hitd10gamer?_r=1&_t=ZS-9AG7LYhMnzB" target="_blank" rel="noopener"><span class="dot"></span>TikTok</a>
+        <a class="glink" href="https://kick.com/hitd10" target="_blank" rel="noopener"><span class="dot"></span>Kick</a>
+        <a class="glink" href="https://x.com/HITD101" target="_blank" rel="noopener"><span class="dot"></span>X (Twitter)</a>
       </div>
     </div>
   </section>
@@ -334,7 +220,6 @@
     </div>
     <p class="game-desc">Estamos reclutando gente comprometida — no importa si tu nivel es básico o avanzado, lo que buscamos es pasión por estas ideas. Elige el área que más te interese.</p>
     <p class="join-note">POR AHORA SOLO ESTAS MODIFICACIONES — CADA BOTÓN LLEVA A UNA WHITELIST DIFERENTE, SE ARMAN MÁS ADELANTE</p>
-
     <div class="game-links">
       <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>Desarrollador</a>
       <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>Diseñador 3D</a>
@@ -342,192 +227,506 @@
       <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>Editor de video</a>
     </div>
   </section>
-
   <footer>
     <span>Operaciones HitD'10</span>
     <button data-view="unete-scroll">Únete al equipo ↓</button>
   </footer>
 </div>
 
-<!-- ============ VIEW: MINECRAFT ============ -->
+<!-- MINECRAFT -->
 <div class="view" id="view-minecraft">
-  <section class="game" data-c="mc">
-    <div class="switch-row">
-      <button data-view="home">← Inicio</button>
-      <button data-view="gtav">GTA V</button>
-      <button data-view="original">Proyecto</button>
-    </div>
-    <div class="game-head">
-      <h2 class="display">Minecraft</h2>
-      <span class="status mono">EN DESARROLLO</span>
-    </div>
-    <p class="game-desc">Estamos creando un servidor de Minecraft base (vanilla) con plugins, además de mods propios. Aquí se publican los avances a medida que van saliendo.</p>
+<section class="game" data-c="mc">
 
-    <div class="log">
-      <div class="log-entry">
-        <div class="log-date">22 SEP</div>
-        <div class="log-body"><h3>Título del avance</h3><p>Describe aquí en una o dos líneas qué se agregó, cambió o mejoró.</p></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">15 SEP</div>
-        <div class="log-body"><h3>Título del avance</h3><p>Describe aquí en una o dos líneas qué se agregó, cambió o mejoró.</p></div>
+  <div class="switch-row">
+    <button data-view="home">← Inicio</button>
+    <button data-view="gtav">GTA V</button>
+    <button data-view="original">Proyecto</button>
+  </div>
+
+  <div class="game-head">
+    <h2 class="display">Minecraft</h2>
+    <span class="status mono">EN DESARROLLO</span>
+  </div>
+
+  <div class="mc-nav">
+    <button class="mc-tab active" data-mc-tab="resumen">Resumen</button>
+    <button class="mc-tab" data-mc-tab="roadmap">Roadmap</button>
+    <button class="mc-tab" data-mc-tab="actualizaciones">Actualizaciones</button>
+    <button class="mc-tab" data-mc-tab="sistemas">Sistemas</button>
+    <button class="mc-tab" data-mc-tab="mundo">Mundo</button>
+    <button class="mc-tab" data-mc-tab="documentacion">Documentación</button>
+  </div>
+
+  <!-- RESUMEN -->
+  <div class="mc-panel active" id="mc-resumen">
+    <div class="mc-hero">
+      <div class="mc-kicker">SERVIDOR MINECRAFT RPG</div>
+      <h1 class="mc-title">MUNDO VIVO</h1>
+      <p class="mc-lead">
+        Estamos construyendo un servidor RPG sobre Minecraft donde el mundo continúa funcionando
+        aunque el jugador se desconecte. Reinos, ciudades, NPC, economía, conflictos, misiones
+        y acontecimientos forman parte de un mundo persistente.
+      </p>
+
+      <div class="mc-meta">
+        <div class="meta-card">
+          <span class="meta-label">PLATAFORMA</span>
+          <span class="meta-value">Paper 1.21.1</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">BASE TÉCNICA</span>
+          <span class="meta-value">Java 21</span>
+        </div>
+        <div class="meta-card">
+          <span class="meta-label">ESTADO</span>
+          <span class="meta-value">Pre-Alpha</span>
+        </div>
       </div>
     </div>
 
-    <div class="game-links">
-      <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>Discord</a>
-      <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>GitHub</a>
-      <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>IP del servidor</a>
+    <div style="margin-top:38px">
+      <h3 class="section-title">¿En qué estamos trabajando?</h3>
+      <p class="section-sub">La arquitectura completa está definida, pero los sistemas se implementan progresivamente. El primer objetivo es construir una base pequeña y funcional antes de escalar el mundo.</p>
+
+      <div class="roadmap-grid">
+        <article class="road-card">
+          <h4>Base técnica</h4>
+          <ul>
+            <li class="done">Servidor Paper funcionando</li>
+            <li class="done">Plugin ServidorRPG cargando correctamente</li>
+            <li class="done">Compilación Maven validada</li>
+            <li class="planned">Configuración y servicios</li>
+          </ul>
+        </article>
+
+        <article class="road-card">
+          <h4>Mundo</h4>
+          <ul>
+            <li class="planned">Mundo principal persistente</li>
+            <li class="planned">Reino Ragnarok</li>
+            <li class="planned">Reino Extinción</li>
+            <li class="planned">Capitales, ciudades y pueblos</li>
+          </ul>
+        </article>
+
+        <article class="road-card">
+          <h4>NPC e IA</h4>
+          <ul>
+            <li class="planned">Identidad y estado persistente</li>
+            <li class="planned">Ciudadanos y profesiones</li>
+            <li class="planned">Guardias y gobernantes</li>
+            <li class="planned">Simulación de NPC distantes</li>
+          </ul>
+        </article>
+
+        <article class="road-card">
+          <h4>Economía</h4>
+          <ul>
+            <li class="planned">Moneda</li>
+            <li class="planned">Producción y recursos</li>
+            <li class="planned">Comercio</li>
+            <li class="planned">Oferta y demanda</li>
+          </ul>
+        </article>
+      </div>
     </div>
-  </section>
+
+    <div style="margin-top:30px;text-align:center">
+      <p class="mono" style="font-size:.68rem;color:var(--text-faint)">EXPLORA EL PROYECTO MEDIANTE LOS APARTADOS DE ABAJO</p>
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div class="mc-panel" id="mc-roadmap">
+    <h3 class="section-title">Roadmap del proyecto</h3>
+    <p class="section-sub">La hoja de ruta muestra la dirección del desarrollo. Los elementos planeados no significan que ya estén implementados.</p>
+
+    <div class="status-legend">
+      <span class="legend done">✓ COMPLETADO</span>
+      <span class="legend dev">◆ EN DESARROLLO</span>
+      <span class="legend planned">+ PLANEADO</span>
+      <span class="legend exp">◇ EXPERIMENTAL</span>
+    </div>
+
+    <div class="roadmap-grid">
+      <article class="road-card">
+        <h4>CORE</h4>
+        <ul>
+          <li class="done">Arquitectura base</li>
+          <li class="done">RPGPlugin</li>
+          <li class="done">Build Maven</li>
+          <li class="planned">RPGServer</li>
+          <li class="planned">Gestión de servicios y módulos</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>WORLD</h4>
+        <ul>
+          <li class="planned">Mundo principal</li>
+          <li class="planned">Gestión de mundos</li>
+          <li class="planned">Viajes</li>
+          <li class="planned">Mundos PvE / Dungeon / Event</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>KINGDOM</h4>
+        <ul>
+          <li class="planned">Ragnarok</li>
+          <li class="planned">Extinción</li>
+          <li class="planned">Gobierno</li>
+          <li class="planned">Territorio</li>
+          <li class="planned">Economía y relaciones</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>CITY</h4>
+        <ul>
+          <li class="planned">Capital</li>
+          <li class="planned">Ciudades</li>
+          <li class="planned">Pueblos</li>
+          <li class="planned">Producción</li>
+          <li class="planned">Comercio y seguridad</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>NPC / AI</h4>
+        <ul>
+          <li class="planned">Identidad persistente</li>
+          <li class="planned">Profesiones</li>
+          <li class="planned">Relaciones</li>
+          <li class="planned">IA limitada</li>
+          <li class="planned">IA avanzada</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>PLAYER</h4>
+        <ul>
+          <li class="planned">Nivel y experiencia</li>
+          <li class="planned">Dinero</li>
+          <li class="planned">Inventario y equipo</li>
+          <li class="planned">Misiones</li>
+          <li class="planned">Reputación e historia</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>ECONOMY / RESOURCES</h4>
+        <ul>
+          <li class="planned">Moneda</li>
+          <li class="planned">Recursos</li>
+          <li class="planned">Producción</li>
+          <li class="planned">Precios variables</li>
+          <li class="planned">Comercio entre ciudades</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>ITEMS / INVENTORY</h4>
+        <ul>
+          <li class="planned">Objetos RPG</li>
+          <li class="planned">Materiales</li>
+          <li class="planned">Herreros</li>
+          <li class="planned">Armas y armaduras</li>
+          <li class="planned">Recetas y equipamiento</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>GUILD / MISSIONS</h4>
+        <ul>
+          <li class="planned">Gremio de aventureros</li>
+          <li class="planned">Misiones</li>
+          <li class="planned">Recompensas</li>
+          <li class="planned">Reputación</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>CRIME / LAWS</h4>
+        <ul>
+          <li class="planned">Crímenes</li>
+          <li class="planned">Leyes</li>
+          <li class="planned">Guardias</li>
+          <li class="planned">Consecuencias</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>DIPLOMACY / WAR</h4>
+        <ul>
+          <li class="planned">Relaciones</li>
+          <li class="planned">Tratados</li>
+          <li class="planned">Conflictos</li>
+          <li class="planned">Guerras</li>
+          <li class="planned">Territorios</li>
+        </ul>
+      </article>
+
+      <article class="road-card">
+        <h4>MEMORY / SIMULATION</h4>
+        <ul>
+          <li class="planned">Memoria histórica</li>
+          <li class="planned">Eventos</li>
+          <li class="planned">Ciudades activas</li>
+          <li class="planned">Simulación distante</li>
+          <li class="planned">Mundo persistente</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+
+  <!-- ACTUALIZACIONES -->
+  <div class="mc-panel" id="mc-actualizaciones">
+    <h3 class="section-title">Actualizaciones</h3>
+    <p class="section-sub">Registro público de cambios importantes del desarrollo. Aquí iremos agregando las novedades conforme avance el proyecto.</p>
+
+    <div class="update-list">
+      <article class="update-entry">
+        <div class="update-date">02 OCT 2026</div>
+        <div class="update-body">
+          <h4>Primer checkpoint técnico oficial</h4>
+          <p>La base técnica de ServidorRPG fue validada: Java 21, Maven, Paper API, RPGPlugin y plugin.yml. El proyecto compila correctamente, genera el JAR y Paper carga el plugin en el servidor local.</p>
+        </div>
+      </article>
+
+      <article class="update-entry">
+        <div class="update-date">SEP 2026</div>
+        <div class="update-body">
+          <h4>Arquitectura del Mundo Vivo</h4>
+          <p>Se estableció la arquitectura modular para permitir el crecimiento progresivo hacia reinos, ciudades, NPC, economía, misiones, crimen, diplomacia, guerra, memoria y simulación.</p>
+        </div>
+      </article>
+
+      <article class="update-entry">
+        <div class="update-date">PRÓXIMA</div>
+        <div class="update-body">
+          <h4>Siguiente checkpoint</h4>
+          <p>Esta entrada se actualizará cuando exista un nuevo avance funcional verificable.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- SISTEMAS -->
+  <div class="mc-panel" id="mc-sistemas">
+    <h3 class="section-title">Sistemas del servidor</h3>
+    <p class="section-sub">Vista general de los principales módulos previstos para ServidorRPG.</p>
+
+    <div class="system-grid">
+      <article class="system-card"><h4>Core</h4><p>Inicio, coordinación y ciclo de vida del servidor RPG.</p><span class="system-state done">BASE VALIDADA</span></article>
+      <article class="system-card"><h4>Mundo</h4><p>Mundos principales, PvE, dungeons, eventos y viajes.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Reinos</h4><p>Gobierno, territorio, economía, recursos, leyes y relaciones.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Ciudades</h4><p>Población, producción, comercio, edificios y seguridad.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>NPC</h4><p>Identidad, profesión, relaciones, historia y estado persistente.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>IA</h4><p>Decisiones y comportamiento de los NPC según su importancia.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Jugador</h4><p>Progresión, dinero, equipo, misiones, reputación e historia.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Economía</h4><p>Moneda, producción, consumo, comercio, precios y mercados.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Recursos</h4><p>Recursos físicos y su impacto en la economía del mundo.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Objetos</h4><p>Armas, armaduras, materiales, recetas y equipamiento.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Gremios</h4><p>Organizaciones y sistemas de progresión relacionados.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Misiones</h4><p>Misiones, recompensas, eventos y consecuencias.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Crimen / Leyes</h4><p>Crímenes, leyes, guardias y consecuencias persistentes.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Diplomacia</h4><p>Relaciones, tratados y cambios políticos.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Guerra</h4><p>Conflictos, fuerzas, territorio y consecuencias.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Memoria</h4><p>Historia de personajes, ciudades y acontecimientos.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Simulación</h4><p>Actividad del mundo cuando no hay jugadores cerca.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Persistencia</h4><p>Cache y base de datos para mantener el estado del mundo.</p><span class="system-state planned">PLANEADO</span></article>
+    </div>
+  </div>
+
+  <!-- MUNDO -->
+  <div class="mc-panel" id="mc-mundo">
+    <h3 class="section-title">El mundo</h3>
+    <p class="section-sub">La primera versión del mundo persistente parte de dos reinos iniciales. Sus nombres y características forman parte de la base actual del proyecto.</p>
+
+    <div class="world-layout">
+      <article class="world-card">
+        <h4>Ragnarok</h4>
+        <div class="world-type">REINO • MONTAÑA / NIEVE</div>
+        <p>Reino inicial con una ambientación relacionada con zonas montañosas, nieve y temática enana.</p>
+        <ul>
+          <li>Capital</li>
+          <li>Ciudad</li>
+          <li>Pueblo</li>
+        </ul>
+      </article>
+
+      <article class="world-card">
+        <h4>Extinción</h4>
+        <div class="world-type">REINO • DESIERTO</div>
+        <p>Segundo reino inicial del mundo principal, ubicado en una región desértica.</p>
+        <ul>
+          <li>Capital</li>
+          <li>Ciudad</li>
+          <li>Pueblo</li>
+        </ul>
+      </article>
+
+      <article class="world-card">
+        <h4>Mundos de aventura</h4>
+        <div class="world-type">PVE • DUNGEON • BOSS • EVENT</div>
+        <p>Estos mundos podrán ser temporales o reiniciables y no deben mezclar su estado con el mundo principal.</p>
+      </article>
+
+      <article class="world-card">
+        <h4>Simulación</h4>
+        <div class="world-type">MUNDO PERSISTENTE</div>
+        <p>Las ciudades y sistemas podrán continuar simulándose aunque no haya jugadores cerca, utilizando distintos niveles de actividad.</p>
+      </article>
+    </div>
+  </div>
+
+  <!-- DOCUMENTACIÓN -->
+  <div class="mc-panel" id="mc-documentacion">
+    <h3 class="section-title">Documentación del proyecto</h3>
+    <p class="section-sub">La página pública muestra el estado y la dirección del proyecto. La documentación técnica completa se mantiene separada.</p>
+
+    <div class="doc-box">
+      <p>La arquitectura técnica oficial define una implementación progresiva: primero una base pequeña y funcional, después la incorporación de los distintos sistemas del mundo vivo.</p>
+      <div class="doc-pills">
+        <span class="doc-pill">Minecraft Java 1.21.1</span>
+        <span class="doc-pill">Paper 1.21.1</span>
+        <span class="doc-pill">Java 21 LTS</span>
+        <span class="doc-pill">Maven 3.9.16</span>
+        <span class="doc-pill">ServidorRPG</span>
+        <span class="doc-pill">Mundo Vivo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="game-links">
+    <a class="glink" href="https://discord.gg/RNTfBrpQzE" target="_blank" rel="noopener"><span class="dot"></span>Discord</a>
+    <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>GitHub</a>
+    <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>IP del servidor</a>
+  </div>
+</section>
 </div>
 
-<!-- ============ VIEW: GTA V ============ -->
+<!-- GTA V -->
 <div class="view" id="view-gtav">
-  <section class="game" data-c="gta">
-    <div class="switch-row">
-      <button data-view="home">← Inicio</button>
-      <button data-view="minecraft">Minecraft</button>
-      <button data-view="original">Proyecto</button>
-    </div>
-    <div class="game-head">
-      <h2 class="display">GTA V</h2>
-      <span class="status mono">EN DESARROLLO</span>
-    </div>
-    <p class="game-desc">Mods y servidor propio (FiveM/similar). Registro de avances y cambios recientes.</p>
-
-    <div class="log">
-      <div class="log-entry">
-        <div class="log-date">20 SEP</div>
-        <div class="log-body"><h3>Título del avance</h3><p>Describe aquí en una o dos líneas qué se agregó, cambió o mejoró.</p></div>
-      </div>
-      <div class="log-entry">
-        <div class="log-date">10 SEP</div>
-        <div class="log-body"><h3>Título del avance</h3><p>Describe aquí en una o dos líneas qué se agregó, cambió o mejoró.</p></div>
-      </div>
-    </div>
-
-    <div class="game-links">
-      <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>Discord</a>
-      <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>GitHub</a>
-      <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>IP del servidor</a>
-    </div>
-  </section>
+<section class="game" data-c="gta">
+  <div class="switch-row">
+    <button data-view="home">← Inicio</button>
+    <button data-view="minecraft">Minecraft</button>
+    <button data-view="original">Proyecto</button>
+  </div>
+  <div class="game-head">
+    <h2 class="display">GTA V</h2>
+    <span class="status mono">EN DESARROLLO</span>
+  </div>
+  <p class="game-desc">Mods y servidor propio (FiveM/similar). Registro de avances y cambios recientes.</p>
+  <div class="log" style="max-width:980px;margin:0 auto;display:flex;flex-direction:column">
+    <div class="update-entry"><div class="update-date">20 SEP</div><div class="update-body"><h4>Título del avance</h4><p>Describe aquí en una o dos líneas qué se agregó, cambió o mejoró.</p></div></div>
+    <div class="update-entry"><div class="update-date">10 SEP</div><div class="update-body"><h4>Título del avance</h4><p>Describe aquí en una o dos líneas qué se agregó, cambió o mejoró.</p></div></div>
+  </div>
+  <div class="game-links">
+    <a class="glink" href="https://discord.gg/RNTfBrpQzE" target="_blank" rel="noopener"><span class="dot"></span>Discord</a>
+    <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>GitHub</a>
+    <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>IP del servidor</a>
+  </div>
+</section>
 </div>
 
-<!-- ============ VIEW: PROYECTO ============ -->
+<!-- PROYECTO -->
 <div class="view" id="view-original">
-  <section class="game" data-c="og">
-    <div class="switch-row">
-      <button data-view="home">← Inicio</button>
-      <button data-view="minecraft">Minecraft</button>
-      <button data-view="gtav">GTA V</button>
-    </div>
-    <div class="game-head">
-      <h2 class="display">Proyecto</h2>
-      <span class="status mono">EN CONSTRUCCIÓN</span>
-    </div>
-    <p class="game-desc">El juego propio del estudio. Todavía sin nombre — el registro de avances empieza aquí.</p>
-
-    <div class="log">
-      <div class="log-entry">
-        <div class="log-date">POR VENIR</div>
-        <div class="log-body"><h3>Primer avance</h3><p>Cuando haya una primera novedad para mostrar, aparecerá aquí.</p></div>
-      </div>
-    </div>
-
-    <div class="game-links">
-      <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>Discord</a>
-      <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>GitHub</a>
-    </div>
-  </section>
+<section class="game" data-c="og">
+  <div class="switch-row">
+    <button data-view="home">← Inicio</button>
+    <button data-view="minecraft">Minecraft</button>
+    <button data-view="gtav">GTA V</button>
+  </div>
+  <div class="game-head">
+    <h2 class="display">Proyecto</h2>
+    <span class="status mono">EN CONSTRUCCIÓN</span>
+  </div>
+  <p class="game-desc">El juego propio del estudio. Todavía sin nombre — el registro de avances empieza aquí.</p>
+  <div class="update-list" style="max-width:980px;margin:0 auto">
+    <article class="update-entry"><div class="update-date">POR VENIR</div><div class="update-body"><h4>Primer avance</h4><p>Cuando haya una primera novedad para mostrar, aparecerá aquí.</p></div></article>
+  </div>
+  <div class="game-links">
+    <a class="glink" href="https://discord.gg/RNTfBrpQzE" target="_blank" rel="noopener"><span class="dot"></span>Discord</a>
+    <a class="glink" href="#" target="_blank" rel="noopener"><span class="dot"></span>GitHub</a>
+  </div>
+</section>
 </div>
 
 <script>
-(function () {
-  var views = ['home', 'minecraft', 'gtav', 'original'];
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fxLayer = document.getElementById('fx-layer');
-  var fxDuration = { home: 0, minecraft: 1800, gtav: 950, original: 3200 };
+(function(){
+  var views=['home','minecraft','gtav','original'];
+  var reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fxLayer=document.getElementById('fx-layer');
+  var fxDuration={home:0,minecraft:700,gtav:950,original:3200};
 
-  function clearEl(el, delay) {
-    setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, delay);
+  function clearEl(el,delay){setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el)},delay)}
+  function spawnCubes(){
+    for(var i=0;i<10;i++){
+      var cube=document.createElement('div');cube.className='fx-cube';
+      cube.style.left=(Math.random()*96)+'vw';cube.style.animationDelay=(Math.random()*.5)+'s';
+      fxLayer.appendChild(cube);clearEl(cube,2200)
+    }
   }
-
-  function spawnCubes() {
-    for (var i = 0; i < 10; i++) {
-      var cube = document.createElement('div');
-      cube.className = 'fx-cube';
-      cube.style.left = (Math.random() * 96) + 'vw';
-      cube.style.animationDelay = (Math.random() * 0.5) + 's';
-      cube.style.background = Math.random() > 0.5 ? 'var(--mc)' : '#8a6b3f';
-      fxLayer.appendChild(cube);
-      clearEl(cube, 2200);
+  function spawnCar(){
+    var car=document.createElement('div');car.className='fx-car';
+    car.innerHTML='<svg width="120" height="46" viewBox="0 0 120 46"><rect x="6" y="18" width="100" height="16" rx="4" fill="#C9A227"/><path d="M22 18 L34 6 H86 L98 18 Z" fill="#C9A227"/><rect x="40" y="9" width="34" height="9" rx="2" fill="#0A0B0F"/><circle cx="30" cy="36" r="8" fill="#0A0B0F"/><circle cx="90" cy="36" r="8" fill="#0A0B0F"/></svg>';
+    fxLayer.appendChild(car);clearEl(car,1000)
+  }
+  function spawnLeaves(){
+    for(var i=0;i<9;i++){
+      var leaf=document.createElement('div');leaf.className='fx-leaf';
+      leaf.style.left=(Math.random()*96)+'vw';leaf.style.animationDelay=(Math.random()*.8)+'s';
+      leaf.style.setProperty('--fx-dx',(Math.random()*160-80)+'px');
+      var tint=Math.random()>.5?'#3FD1E0':'#7FCB4A';
+      leaf.innerHTML='<svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 14 C2 6 6 2 14 2 C14 10 10 14 2 14 Z" fill="'+tint+'"/></svg>';
+      fxLayer.appendChild(leaf);clearEl(leaf,3000)
     }
   }
 
-  function spawnCar() {
-    var car = document.createElement('div');
-    car.className = 'fx-car';
-    car.innerHTML = '<svg width="120" height="46" viewBox="0 0 120 46"><rect x="6" y="18" width="100" height="16" rx="4" fill="%23C9A227"/><path d="M22 18 L34 6 H86 L98 18 Z" fill="%23C9A227"/><rect x="40" y="9" width="34" height="9" rx="2" fill="%230A0B0F"/><circle cx="30" cy="36" r="8" fill="%230A0B0F"/><circle cx="90" cy="36" r="8" fill="%230A0B0F"/></svg>';
-    fxLayer.appendChild(car);
-    clearEl(car, 1000);
-  }
-
-  function spawnLeaves() {
-    for (var i = 0; i < 9; i++) {
-      var leaf = document.createElement('div');
-      leaf.className = 'fx-leaf';
-      leaf.style.left = (Math.random() * 96) + 'vw';
-      leaf.style.animationDelay = (Math.random() * 0.8) + 's';
-      leaf.style.setProperty('--fx-dx', (Math.random() * 160 - 80) + 'px');
-      var tint = Math.random() > 0.5 ? '%233FD1E0' : '%237FCB4A';
-      leaf.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 14 C2 6 6 2 14 2 C14 10 10 14 2 14 Z" fill="' + tint + '"/></svg>';
-      fxLayer.appendChild(leaf);
-      clearEl(leaf, 3000);
+  function activate(target,scrollToUnete){
+    document.querySelectorAll('[data-view]').forEach(function(el){
+      var v=el.getAttribute('data-view');
+      if(views.indexOf(v)!==-1)el.classList.toggle('active',v===target);
+    });
+    views.forEach(function(id){
+      var el=document.getElementById('view-'+id);
+      if(el)el.classList.remove('active')
+    });
+    window.scrollTo({top:0,behavior:'auto'});
+    if(!reduceMotion){
+      if(target==='minecraft')spawnCubes();
+      if(target==='gtav')spawnCar();
+      if(target==='original')spawnLeaves();
     }
+    setTimeout(function(){
+      var el=document.getElementById('view-'+target);
+      if(el)el.classList.add('active');
+      if(scrollToUnete)document.getElementById('unete').scrollIntoView({behavior:'smooth',block:'start'})
+    },reduceMotion?0:(fxDuration[target]||0))
   }
 
-  function activate(target, scrollToUnete) {
-    // nav highlight updates immediately so the click feels responsive
-    document.querySelectorAll('[data-view]').forEach(function (el) {
-      if (views.indexOf(el.getAttribute('data-view')) !== -1) {
-        el.classList.toggle('active', el.getAttribute('data-view') === target);
-      }
-    });
+  document.querySelectorAll('[data-view]').forEach(function(el){
+    el.addEventListener('click',function(){
+      var target=el.getAttribute('data-view');
+      if(target==='unete-scroll')activate('home',true);
+      else activate(target,false)
+    })
+  });
 
-    // hide all views now; the effect plays over a blank screen
-    views.forEach(function (id) {
-      var el = document.getElementById('view-' + id);
-      if (el) el.classList.remove('active');
-    });
-    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
-
-    if (!reduceMotion) {
-      if (target === 'minecraft') spawnCubes();
-      if (target === 'gtav') spawnCar();
-      if (target === 'original') spawnLeaves();
-    }
-
-    var delay = reduceMotion ? 0 : (fxDuration[target] || 0);
-    setTimeout(function () {
-      var el = document.getElementById('view-' + target);
-      if (el) el.classList.add('active');
-      if (scrollToUnete) {
-        document.getElementById('unete').scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }, delay);
-  }
-
-  document.querySelectorAll('[data-view]').forEach(function (el) {
-    el.addEventListener('click', function () {
-      var target = el.getAttribute('data-view');
-      if (target === 'unete-scroll') {
-        activate('home', true);
-      } else {
-        activate(target, false);
-      }
-    });
+  /* Navegación interna de Minecraft */
+  var tabs=document.querySelectorAll('[data-mc-tab]');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      var target=tab.getAttribute('data-mc-tab');
+      tabs.forEach(function(t){t.classList.toggle('active',t===tab)});
+      document.querySelectorAll('.mc-panel').forEach(function(panel){
+        panel.classList.toggle('active',panel.id==='mc-'+target)
+      });
+      window.scrollTo({top:0,behavior:'smooth'});
+    })
   });
 })();
 </script>
