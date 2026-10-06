@@ -245,7 +245,7 @@ footer button:hover{color:var(--text)}
 
   <div class="game-head">
     <h2 class="display">Minecraft</h2>
-    <span class="status mono">EN DESARROLLO</span>
+    <span class="status mono">V1.3 • EN DESARROLLO</span>
   </div>
 
   <div class="mc-nav">
@@ -263,9 +263,10 @@ footer button:hover{color:var(--text)}
       <div class="mc-kicker">SERVIDOR MINECRAFT RPG</div>
       <h1 class="mc-title">MUNDO VIVO</h1>
       <p class="mc-lead">
-        Estamos construyendo un servidor RPG sobre Minecraft donde el mundo continúa funcionando
-        aunque el jugador se desconecte. Reinos, ciudades, NPC, economía, conflictos, misiones
-        y acontecimientos forman parte de un mundo persistente.
+        Estamos construyendo un servidor RPG de <strong>Mundo Vivo</strong> sobre Minecraft. La V1.3
+        consolida el estado real del proyecto: Core, World, Kingdom, City y el sistema territorial
+        ya cuentan con implementación validada. El siguiente gran paso es construir el sistema central
+        de ubicación que conectará mundo, reino, ciudad y futuros establecimientos.
       </p>
 
       <div class="mc-meta">
@@ -290,42 +291,42 @@ footer button:hover{color:var(--text)}
 
       <div class="roadmap-grid">
         <article class="road-card">
-          <h4>Base técnica</h4>
+          <h4>BASE TÉCNICA</h4>
           <ul>
-            <li class="done">Servidor Paper funcionando</li>
-            <li class="done">Plugin ServidorRPG cargando correctamente</li>
-            <li class="done">Compilación Maven validada</li>
-            <li class="planned">Configuración y servicios</li>
+            <li class="done">Core implementado</li>
+            <li class="done">Ciclo de vida y servicios</li>
+            <li class="done">World implementado</li>
+            <li class="done">Paper 1.21.1 + Java 21</li>
           </ul>
         </article>
 
         <article class="road-card">
-          <h4>Mundo</h4>
+          <h4>TERRITORIO</h4>
           <ul>
-            <li class="planned">Mundo principal persistente</li>
-            <li class="planned">Reino Ragnarok</li>
-            <li class="planned">Reino Extinción</li>
-            <li class="planned">Capitales, ciudades y pueblos</li>
+            <li class="done">Selección POS1/POS2</li>
+            <li class="done">Territorio de reino</li>
+            <li class="done">Territorio de ciudad</li>
+            <li class="done">TP de reino/ciudad</li>
           </ul>
         </article>
 
         <article class="road-card">
-          <h4>NPC e IA</h4>
+          <h4>LOCATION SYSTEM</h4>
           <ul>
-            <li class="planned">Identidad y estado persistente</li>
-            <li class="planned">Ciudadanos y profesiones</li>
-            <li class="planned">Guardias y gobernantes</li>
-            <li class="planned">Simulación de NPC distantes</li>
+            <li class="dev">Siguiente checkpoint</li>
+            <li class="planned">World → Kingdom → City</li>
+            <li class="planned">Entrada/salida de territorios</li>
+            <li class="planned">Contexto por jugador</li>
           </ul>
         </article>
 
         <article class="road-card">
-          <h4>Economía</h4>
+          <h4>ESTABLISHMENTS</h4>
           <ul>
-            <li class="planned">Moneda</li>
-            <li class="planned">Producción y recursos</li>
-            <li class="planned">Comercio</li>
-            <li class="planned">Oferta y demanda</li>
+            <li class="planned">Herrería</li>
+            <li class="planned">Gremio de aventureros</li>
+            <li class="planned">Tiendas, posada y banco</li>
+            <li class="planned">Ubicación validada por jerarquía</li>
           </ul>
         </article>
       </div>
@@ -338,211 +339,85 @@ footer button:hover{color:var(--text)}
 
   <!-- ROADMAP -->
   <div class="mc-panel" id="mc-roadmap">
-    <h3 class="section-title">Roadmap del proyecto</h3>
-    <p class="section-sub">La hoja de ruta muestra la dirección del desarrollo. Los elementos planeados no significan que ya estén implementados.</p>
+    <h3 class="section-title">Roadmap V1.3</h3>
+    <p class="section-sub">Estado real del proyecto según la arquitectura V1.3. Los estados reflejan checkpoints implementados o trabajo pendiente; compilar no equivale a considerar terminado un sistema.</p>
 
     <div class="status-legend">
       <span class="legend done">✓ COMPLETADO</span>
-      <span class="legend dev">◆ EN DESARROLLO</span>
-      <span class="legend planned">+ PLANEADO</span>
-      <span class="legend exp">◇ EXPERIMENTAL</span>
+      <span class="legend dev">◆ SIGUIENTE</span>
+      <span class="legend planned">+ PENDIENTE</span>
     </div>
 
     <div class="roadmap-grid">
-      <article class="road-card">
-        <h4>CORE</h4>
-        <ul>
-          <li class="done">Arquitectura base</li>
-          <li class="done">RPGPlugin</li>
-          <li class="done">Build Maven</li>
-          <li class="planned">RPGServer</li>
-          <li class="planned">Gestión de servicios y módulos</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>WORLD</h4>
-        <ul>
-          <li class="planned">Mundo principal</li>
-          <li class="planned">Gestión de mundos</li>
-          <li class="planned">Viajes</li>
-          <li class="planned">Mundos PvE / Dungeon / Event</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>KINGDOM</h4>
-        <ul>
-          <li class="planned">Ragnarok</li>
-          <li class="planned">Extinción</li>
-          <li class="planned">Gobierno</li>
-          <li class="planned">Territorio</li>
-          <li class="planned">Economía y relaciones</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>CITY</h4>
-        <ul>
-          <li class="planned">Capital</li>
-          <li class="planned">Ciudades</li>
-          <li class="planned">Pueblos</li>
-          <li class="planned">Producción</li>
-          <li class="planned">Comercio y seguridad</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>NPC / AI</h4>
-        <ul>
-          <li class="planned">Identidad persistente</li>
-          <li class="planned">Profesiones</li>
-          <li class="planned">Relaciones</li>
-          <li class="planned">IA limitada</li>
-          <li class="planned">IA avanzada</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>PLAYER</h4>
-        <ul>
-          <li class="planned">Nivel y experiencia</li>
-          <li class="planned">Dinero</li>
-          <li class="planned">Inventario y equipo</li>
-          <li class="planned">Misiones</li>
-          <li class="planned">Reputación e historia</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>ECONOMY / RESOURCES</h4>
-        <ul>
-          <li class="planned">Moneda</li>
-          <li class="planned">Recursos</li>
-          <li class="planned">Producción</li>
-          <li class="planned">Precios variables</li>
-          <li class="planned">Comercio entre ciudades</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>ITEMS / INVENTORY</h4>
-        <ul>
-          <li class="planned">Objetos RPG</li>
-          <li class="planned">Materiales</li>
-          <li class="planned">Herreros</li>
-          <li class="planned">Armas y armaduras</li>
-          <li class="planned">Recetas y equipamiento</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>GUILD / MISSIONS</h4>
-        <ul>
-          <li class="planned">Gremio de aventureros</li>
-          <li class="planned">Misiones</li>
-          <li class="planned">Recompensas</li>
-          <li class="planned">Reputación</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>CRIME / LAWS</h4>
-        <ul>
-          <li class="planned">Crímenes</li>
-          <li class="planned">Leyes</li>
-          <li class="planned">Guardias</li>
-          <li class="planned">Consecuencias</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>DIPLOMACY / WAR</h4>
-        <ul>
-          <li class="planned">Relaciones</li>
-          <li class="planned">Tratados</li>
-          <li class="planned">Conflictos</li>
-          <li class="planned">Guerras</li>
-          <li class="planned">Territorios</li>
-        </ul>
-      </article>
-
-      <article class="road-card">
-        <h4>MEMORY / SIMULATION</h4>
-        <ul>
-          <li class="planned">Memoria histórica</li>
-          <li class="planned">Eventos</li>
-          <li class="planned">Ciudades activas</li>
-          <li class="planned">Simulación distante</li>
-          <li class="planned">Mundo persistente</li>
-        </ul>
-      </article>
+      <article class="road-card"><h4>01 · CORE</h4><ul><li class="done">IMPLEMENTADO</li><li class="done">Ciclo de vida</li><li class="done">Servicios</li><li class="done">Base estable</li></ul></article>
+      <article class="road-card"><h4>02 · WORLD</h4><ul><li class="done">IMPLEMENTADO</li><li class="done">Carga y descarga</li><li class="done">Reset</li><li class="done">Estados del mundo</li></ul></article>
+      <article class="road-card"><h4>03 · KINGDOM</h4><ul><li class="done">IMPLEMENTADO</li><li class="done">Reinos y persistencia</li><li class="done">Territorio</li><li class="planned">Capital oficial</li></ul></article>
+      <article class="road-card"><h4>04 · CITY</h4><ul><li class="done">IMPLEMENTADO</li><li class="done">Tipos de ciudad</li><li class="done">Ubicación</li><li class="done">Persistencia</li></ul></article>
+      <article class="road-card"><h4>05 · TERRITORY</h4><ul><li class="done">IMPLEMENTADO</li><li class="done">POS1/POS2 reutilizable</li><li class="done">Reino rectangular</li><li class="done">Ciudad dentro del reino</li></ul></article>
+      <article class="road-card"><h4>06 · LOCATION</h4><ul><li class="dev">SIGUIENTE</li><li class="planned">World → Kingdom → City</li><li class="planned">Establecimiento</li><li class="planned">Contexto actual del jugador</li></ul></article>
+      <article class="road-card"><h4>07 · CAPITAL</h4><ul><li class="planned">PENDIENTE</li><li class="planned">capitalId</li><li class="planned">KingdomGovernment</li><li class="planned">Comandos de capital</li></ul></article>
+      <article class="road-card"><h4>08 · ESTABLISHMENTS</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Herrería</li><li class="planned">Gremio</li><li class="planned">Tiendas / Banco / Posada</li></ul></article>
+      <article class="road-card"><h4>09 · NPC</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Modelo persistente</li><li class="planned">Profesiones</li><li class="planned">Relaciones e historia</li></ul></article>
+      <article class="road-card"><h4>10 · AI</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Estados y necesidades</li><li class="planned">Decisiones</li><li class="planned">IA por niveles</li></ul></article>
+      <article class="road-card"><h4>11 · PLAYER</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Progresión</li><li class="planned">Dinero e inventario</li><li class="planned">Misiones y reputación</li></ul></article>
+      <article class="road-card"><h4>12 · ECONOMY / RESOURCES</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Mercado y precios</li><li class="planned">Reservas físicas</li><li class="planned">Abastecimiento</li></ul></article>
+      <article class="road-card"><h4>13 · ITEMS / INVENTORY</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Equipo</li><li class="planned">Crafting</li><li class="planned">Almacenes</li></ul></article>
+      <article class="road-card"><h4>14 · GUILD / MISSIONS</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Gremios</li><li class="planned">Misiones</li><li class="planned">Recompensas</li></ul></article>
+      <article class="road-card"><h4>15 · CRIME / LAWS</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Crimen</li><li class="planned">Leyes</li><li class="planned">Justicia y consecuencias</li></ul></article>
+      <article class="road-card"><h4>16 · DIPLOMACY / WAR</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Tratados</li><li class="planned">Conflictos</li><li class="planned">Guerras y territorio</li></ul></article>
+      <article class="road-card"><h4>17 · MEMORY</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Historia persistente</li><li class="planned">Eventos</li><li class="planned">Reputación</li></ul></article>
+      <article class="road-card"><h4>18 · SIMULATION</h4><ul><li class="planned">PENDIENTE</li><li class="planned">ACTIVE</li><li class="planned">SEMI_ACTIVE</li><li class="planned">DORMANT</li></ul></article>
+      <article class="road-card"><h4>19 · DATABASE</h4><ul><li class="planned">PENDIENTE</li><li class="planned">Persistencia definitiva</li><li class="planned">Repositorios</li><li class="planned">Guardado / carga</li></ul></article>
     </div>
   </div>
 
   <!-- ACTUALIZACIONES -->
   <div class="mc-panel" id="mc-actualizaciones">
     <h3 class="section-title">Actualizaciones</h3>
-    <p class="section-sub">Registro público de cambios importantes del desarrollo. Aquí iremos agregando las novedades conforme avance el proyecto.</p>
+    <p class="section-sub">Registro público de checkpoints y cambios importantes del desarrollo.</p>
 
     <div class="update-list">
-      <article class="update-entry">
-        <div class="update-date">02 OCT 2026</div>
-        <div class="update-body">
-          <h4>Primer checkpoint técnico oficial</h4>
-          <p>La base técnica de ServidorRPG fue validada: Java 21, Maven, Paper API, RPGPlugin y plugin.yml. El proyecto compila correctamente, genera el JAR y Paper carga el plugin en el servidor local.</p>
-        </div>
-      </article>
-
-      <article class="update-entry">
-        <div class="update-date">SEP 2026</div>
-        <div class="update-body">
-          <h4>Arquitectura del Mundo Vivo</h4>
-          <p>Se estableció la arquitectura modular para permitir el crecimiento progresivo hacia reinos, ciudades, NPC, economía, misiones, crimen, diplomacia, guerra, memoria y simulación.</p>
-        </div>
-      </article>
-
-      <article class="update-entry">
-        <div class="update-date">PRÓXIMA</div>
-        <div class="update-body">
-          <h4>Siguiente checkpoint</h4>
-          <p>Esta entrada se actualizará cuando exista un nuevo avance funcional verificable.</p>
-        </div>
-      </article>
+      <article class="update-entry"><div class="update-date">06 OCT 2026</div><div class="update-body"><h4>Arquitectura V1.3 — Territorio y siguiente checkpoint</h4><p>La V1.3 consolida el estado real del proyecto. Core, World, Kingdom, City y Territory Selection ya están implementados. También están validados los territorios persistentes de reino y ciudad, la expansión territorial y el teletransporte con permisos.</p></div></article>
+      <article class="update-entry"><div class="update-date">06 OCT 2026</div><div class="update-body"><h4>Nuevo objetivo: Location System</h4><p>El próximo checkpoint será un sistema central de ubicación que determine el contexto del jugador mediante la jerarquía World → Kingdom → City → Establishment. Otros sistemas podrán reutilizarlo para leyes, guardias, comercio, misiones, impuestos, PvP y eventos.</p></div></article>
+      <article class="update-entry"><div class="update-date">06 OCT 2026</div><div class="update-body"><h4>Establecimientos preparados para la siguiente etapa</h4><p>La arquitectura incorpora un módulo genérico para herrerías, gremios de aventureros, tiendas, posadas, mercado, banco y otros establecimientos sin crear una clase independiente para cada negocio.</p></div></article>
+      <article class="update-entry"><div class="update-date">SEP 2026</div><div class="update-body"><h4>Primer checkpoint técnico oficial</h4><p>La base técnica fue validada: Java 21, Maven, Paper API, RPGPlugin y plugin.yml. El proyecto compila correctamente, genera ServidorRPG.jar y Paper carga el plugin en el servidor local.</p></div></article>
     </div>
   </div>
 
   <!-- SISTEMAS -->
   <div class="mc-panel" id="mc-sistemas">
     <h3 class="section-title">Sistemas del servidor</h3>
-    <p class="section-sub">Vista general de los principales módulos previstos para ServidorRPG.</p>
+    <p class="section-sub">Estado resumido de los sistemas según V1.3.</p>
 
     <div class="system-grid">
-      <article class="system-card"><h4>Core</h4><p>Inicio, coordinación y ciclo de vida del servidor RPG.</p><span class="system-state done">BASE VALIDADA</span></article>
-      <article class="system-card"><h4>Mundo</h4><p>Mundos principales, PvE, dungeons, eventos y viajes.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Reinos</h4><p>Gobierno, territorio, economía, recursos, leyes y relaciones.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Ciudades</h4><p>Población, producción, comercio, edificios y seguridad.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>NPC</h4><p>Identidad, profesión, relaciones, historia y estado persistente.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>IA</h4><p>Decisiones y comportamiento de los NPC según su importancia.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Jugador</h4><p>Progresión, dinero, equipo, misiones, reputación e historia.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Economía</h4><p>Moneda, producción, consumo, comercio, precios y mercados.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Recursos</h4><p>Recursos físicos y su impacto en la economía del mundo.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Objetos</h4><p>Armas, armaduras, materiales, recetas y equipamiento.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Gremios</h4><p>Organizaciones y sistemas de progresión relacionados.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Misiones</h4><p>Misiones, recompensas, eventos y consecuencias.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Crimen / Leyes</h4><p>Crímenes, leyes, guardias y consecuencias persistentes.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Diplomacia</h4><p>Relaciones, tratados y cambios políticos.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Guerra</h4><p>Conflictos, fuerzas, territorio y consecuencias.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Memoria</h4><p>Historia de personajes, ciudades y acontecimientos.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Simulación</h4><p>Actividad del mundo cuando no hay jugadores cerca.</p><span class="system-state planned">PLANEADO</span></article>
-      <article class="system-card"><h4>Persistencia</h4><p>Cache y base de datos para mantener el estado del mundo.</p><span class="system-state planned">PLANEADO</span></article>
+      <article class="system-card"><h4>Core</h4><p>Ciclo de vida, coordinación y servicios.</p><span class="system-state done">IMPLEMENTADO</span></article>
+      <article class="system-card"><h4>World</h4><p>Carga, descarga, reset y estados del mundo.</p><span class="system-state done">IMPLEMENTADO</span></article>
+      <article class="system-card"><h4>Kingdom</h4><p>Reinos, persistencia, territorio, relaciones y progreso.</p><span class="system-state done">IMPLEMENTADO</span></article>
+      <article class="system-card"><h4>City</h4><p>Ciudades, tipos, ubicación y persistencia.</p><span class="system-state done">IMPLEMENTADO</span></article>
+      <article class="system-card"><h4>Territory Selection</h4><p>Selección POS1/POS2 reutilizable por jugador.</p><span class="system-state done">IMPLEMENTADO</span></article>
+      <article class="system-card"><h4>Territorios</h4><p>Rectángulos persistentes de reino y ciudad con validación jerárquica.</p><span class="system-state done">IMPLEMENTADO</span></article>
+      <article class="system-card"><h4>Location System</h4><p>Contexto World → Kingdom → City → Establishment.</p><span class="system-state next">SIGUIENTE</span></article>
+      <article class="system-card"><h4>Capital</h4><p>Referencia oficial capitalId conectada al gobierno del reino.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Establishments</h4><p>Herrería, gremio, tiendas, posada, mercado y banco.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>NPC</h4><p>Identidad, profesión, relaciones, historia y estado persistente.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>IA</h4><p>Estados, necesidades y decisiones de los NPC.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Jugador</h4><p>Progresión, dinero, equipo, misiones y reputación.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Economía</h4><p>Moneda, mercados, precios, comercio y abastecimiento.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Recursos</h4><p>Reservas físicas, producción y distribución.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Objetos / Inventario</h4><p>Equipo, materiales, crafting y almacenes.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Gremios / Misiones</h4><p>Gremios, contratos, misiones y recompensas.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Crimen / Leyes</h4><p>Crimen, justicia, guardias y consecuencias.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Diplomacia / Guerra</h4><p>Tratados, conflictos, fuerzas y territorio.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Memoria</h4><p>Historia persistente, eventos y reputación.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Simulación</h4><p>Continuidad del mundo sin jugadores cercanos.</p><span class="system-state planned">PENDIENTE</span></article>
+      <article class="system-card"><h4>Database</h4><p>Persistencia definitiva y repositorios.</p><span class="system-state planned">PENDIENTE</span></article>
     </div>
   </div>
 
   <!-- MUNDO -->
   <div class="mc-panel" id="mc-mundo">
     <h3 class="section-title">El mundo</h3>
-    <p class="section-sub">La primera versión del mundo persistente parte de dos reinos iniciales. Sus nombres y características forman parte de la base actual del proyecto.</p>
+    <p class="section-sub">La arquitectura territorial ya está implementada en la base actual. La jerarquía pública del mundo es Mundo → Reino → Capital/Ciudad/Aldea → territorio.</p>
 
     <div class="world-layout">
       <article class="world-card">
@@ -594,6 +469,7 @@ footer button:hover{color:var(--text)}
         <span class="doc-pill">Java 21 LTS</span>
         <span class="doc-pill">Maven 3.9.16</span>
         <span class="doc-pill">ServidorRPG</span>
+        <span class="doc-pill">Arquitectura V1.3</span>
         <span class="doc-pill">Mundo Vivo</span>
       </div>
     </div>
